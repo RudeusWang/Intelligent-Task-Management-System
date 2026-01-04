@@ -11,6 +11,11 @@ app = FastAPI(
 # 注册路由
 app.include_router(tasks.router, prefix=settings.API_V1_STR, tags=["tasks"])
 
+# 健康检查路由
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 
 
 if __name__ == "__main__":
